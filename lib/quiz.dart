@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/models/questions.dart';
-import 'package:quizapp/models/quiz_questions.dart';
+import 'package:quizapp/models/results_screen.dart';
 import 'package:quizapp/questions_screen.dart';
 import './firstscreen.dart';
 
@@ -30,7 +30,7 @@ class _QuizAppState extends State<QuizApp> {
   //   });
   // }
 
-   List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
 
   var currentScreen = 'start-screen';
 
@@ -41,20 +41,13 @@ class _QuizAppState extends State<QuizApp> {
   }
 
   void chooseAnswer(String answer) {
-
-     selectedAnswers.add(answer);
-
-     
-    if(selectedAnswers.length==questions.length){
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers=[];
-        currentScreen='start-screen';
-      
+        selectedAnswers = [];
+        currentScreen = 'results-screen';
       });
     }
-
-   
-  
   }
 
   @override
@@ -64,6 +57,8 @@ class _QuizAppState extends State<QuizApp> {
       widgetScreen = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
+    } else if (currentScreen == 'results-screen') {
+      widgetScreen =  ResultsScreen(chooseAnswer: selectedAnswers,);
     }
     return MaterialApp(
       home: Scaffold(
