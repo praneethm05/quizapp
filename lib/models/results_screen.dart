@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/models/questions.dart';
 
 class ResultsScreen extends StatelessWidget {
-  ResultsScreen({super.key, required this.chooseAnswer});
+ const ResultsScreen({super.key, required this.chooseAnswer});
   final List<String> chooseAnswer;
 
   List<Map<String, Object>> getSummaryData() {
